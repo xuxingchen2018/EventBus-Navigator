@@ -31,7 +31,7 @@ class MarkPosterAction : BaseMarkPosterAction() {
             list.add(fullName)
             ConfigHelper.postMethodSet = list
         }
-        FileContentUtil.reparseFiles(method.containingFile.virtualFile)
+        FileContentUtil.reparseFiles(method.project, arrayListOf(method.containingFile.virtualFile),true)
     }
 
     override fun shouldShow(method: PsiMethod): Boolean {

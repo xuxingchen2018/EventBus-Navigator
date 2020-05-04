@@ -2,7 +2,6 @@ package cn.vove7.eventbus_nav.util
 
 import com.intellij.psi.*
 import com.intellij.psi.search.GlobalSearchScope
-import com.intellij.util.FileContentUtil
 import org.jetbrains.kotlin.asJava.LightClassUtil.getLightClassMethod
 import org.jetbrains.kotlin.idea.refactoring.fqName.getKotlinFqName
 import org.jetbrains.kotlin.nj2k.postProcessing.resolve
@@ -140,6 +139,6 @@ fun String.toJavaType(): String {
 
 fun refresh() {
 //    FileContentUtil.setFileText()
-    FileContentUtil.FORCE_RELOAD_REQUESTOR
-    FileContentUtil.reparseFiles()
+//    FileContentUtil.FORCE_RELOAD_REQUESTOR
+//    FileContentUtil.reparseFiles()
 }

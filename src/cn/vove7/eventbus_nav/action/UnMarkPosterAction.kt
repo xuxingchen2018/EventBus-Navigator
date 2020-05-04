@@ -29,7 +29,8 @@ class UnMarkPosterAction : BaseMarkPosterAction() {
             list.remove(fullName)
             ConfigHelper.postMethodSet = list
         }
-        FileContentUtil.reparseFiles(method.containingFile.virtualFile)
+//        FileContentUtil.reparseFiles(method.containingFile.virtualFile)
+        FileContentUtil.reparseFiles(method.project, arrayListOf(method.containingFile.virtualFile),true)
     }
 
 
