@@ -14,6 +14,7 @@ import com.intellij.psi.JavaPsiFacade
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiMethod
 import com.intellij.psi.PsiMethodCallExpression
+import com.intellij.psi.impl.source.PsiClassReferenceType
 import com.intellij.psi.search.GlobalSearchScope
 import com.intellij.psi.util.PsiUtilBase
 import com.intellij.ui.awt.RelativePoint
@@ -34,6 +35,8 @@ class EventBus3LineMarkerProvider : LineMarkerProvider {
         val psiMethod by lazy { psiElement.psiMethod() }
         return when {
             PsiUtils.isEventBusPost(psiElement) -> {
+                val psiExpression = ((psiElement as PsiMethodCallExpression).argumentList.expressionTypes[0] as PsiClassReferenceType).resolve()?.findFieldByName("NAME", true)?.initializer
+                println(psiExpression?.text)
                 LineMarkerInfo(
                         psiElement, psiElement.textRange,
                         ICON_NAV, 0, { "Show Receiver" },
